@@ -35,9 +35,22 @@ const LaborLaw = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section with Video Background */}
+      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-20 overflow-hidden">
+        {/* Video Background */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+        >
+          <source src="/v2.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-blue-900 bg-opacity-60"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="flex items-center space-x-3 mb-6">
@@ -45,37 +58,63 @@ const LaborLaw = () => {
                 <span className="text-blue-200 font-medium">Especialistas en Derecho Laboral</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Defendemos sus derechos laborales
+                Defendemos sus derechos laborales con excelencia
               </h1>
               <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-                Nuestro equipo especializado en derecho laboral tiene una trayectoria 
-                probada defendiendo trabajadores y empresas en toda España. 
-                No cobramos hasta ganar su caso.
+                Más de 15 años de experiencia defendiendo trabajadores en toda España. 
+                Especializados en despidos improcedentes, acoso laboral y accidentes de trabajo. 
+                Sin honorarios hasta conseguir su indemnización.
               </p>
               
-              <div className="grid grid-cols-2 gap-6 mb-8">
-                {laborStats.map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-3xl font-bold text-yellow-400">{stat.value}</div>
-                    <div className="text-blue-100 text-sm">{stat.label}</div>
-                  </div>
-                ))}
+              <div className="bg-blue-800 bg-opacity-50 rounded-lg p-6 mb-8">
+                <div className="grid grid-cols-2 gap-6">
+                  {laborStats.map((stat, index) => (
+                    <div key={index} className="text-center">
+                      <div className="text-3xl font-bold text-yellow-400">{stat.value}</div>
+                      <div className="text-blue-100 text-sm">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <Link 
-                to="/contacto"
-                className="inline-flex items-center bg-yellow-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors duration-200"
-              >
-                Consulta de Urgencia
-                <Phone className="h-4 w-4 ml-2" />
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link 
+                  to="/contacto"
+                  className="inline-flex items-center bg-yellow-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors duration-200 shadow-lg"
+                >
+                  Consulta de Urgencia
+                  <Phone className="h-4 w-4 ml-2" />
+                </Link>
+                <a 
+                  href="tel:+34914567890"
+                  className="inline-flex items-center border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-all duration-200"
+                >
+                  Llamar: 91 456 78 90
+                </a>
+              </div>
             </div>
-            <div>
-              <img 
-                src="https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Abogado laboralista en reunión"
-                className="rounded-lg shadow-2xl"
-              />
+            <div className="hidden lg:block">
+              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8">
+                <h3 className="text-2xl font-bold mb-6">¿Le han despedido?</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-yellow-400" />
+                    <span>Evaluación gratuita en 24h</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-yellow-400" />
+                    <span>98% de casos ganados</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-yellow-400" />
+                    <span>Sin honorarios hasta ganar</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-yellow-400" />
+                    <span>Máxima indemnización</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

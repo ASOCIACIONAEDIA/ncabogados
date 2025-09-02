@@ -49,9 +49,20 @@ const FamilyLaw = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-red-900 via-red-800 to-red-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section with High Quality Background Image */}
+      <section className="relative bg-gradient-to-br from-red-900 via-red-800 to-red-900 text-white py-20 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+          style={{
+            backgroundImage: "url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1920')"
+          }}
+        ></div>
+        
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-red-900 bg-opacity-70"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="flex items-center space-x-3 mb-6">
@@ -62,24 +73,70 @@ const FamilyLaw = () => {
                 Protegemos lo más importante: su familia
               </h1>
               <p className="text-xl text-red-100 mb-8 leading-relaxed">
-                Con más de dos décadas de experiencia, ofrecemos asesoramiento jurídico 
-                especializado en todas las áreas del derecho de familia, priorizando 
-                siempre el bienestar de los menores y la estabilidad familiar.
+                Más de 20 años de experiencia en derecho de familia. Especializados en divorcios, 
+                custodia de menores, adopciones y violencia doméstica. Ofrecemos un enfoque humano 
+                y profesional para proteger sus intereses y los de sus hijos.
               </p>
-              <Link 
-                to="/contacto"
-                className="inline-flex items-center bg-yellow-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors duration-200"
-              >
-                Consulta Gratuita
-                <Phone className="h-4 w-4 ml-2" />
-              </Link>
+              
+              <div className="bg-red-800 bg-opacity-50 rounded-lg p-6 mb-8">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-yellow-400">96%</div>
+                    <div className="text-red-100 text-sm">Casos ganados</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-yellow-400">850+</div>
+                    <div className="text-red-100 text-sm">Familias ayudadas</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-yellow-400">8-12</div>
+                    <div className="text-red-100 text-sm">Meses promedio</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-yellow-400">100%</div>
+                    <div className="text-red-100 text-sm">Confidencial</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link 
+                  to="/contacto"
+                  className="inline-flex items-center bg-yellow-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors duration-200 shadow-lg"
+                >
+                  Consulta Gratuita
+                  <Phone className="h-4 w-4 ml-2" />
+                </Link>
+                <a 
+                  href="tel:+34914567890"
+                  className="inline-flex items-center border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-900 transition-all duration-200"
+                >
+                  Llamar: 91 456 78 90
+                </a>
+              </div>
             </div>
-            <div>
-              <img 
-                src="https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Abogado especialista en derecho de familia"
-                className="rounded-lg shadow-2xl"
-              />
+            <div className="hidden lg:block">
+              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8">
+                <h3 className="text-2xl font-bold mb-6">¿Problemas familiares?</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-yellow-400" />
+                    <span>Máxima confidencialidad</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-yellow-400" />
+                    <span>Enfoque humano y cercano</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-yellow-400" />
+                    <span>Protección de menores</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-yellow-400" />
+                    <span>Soluciones amigables</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

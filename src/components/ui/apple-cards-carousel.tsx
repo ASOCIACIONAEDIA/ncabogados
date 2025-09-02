@@ -34,11 +34,10 @@ export const Carousel = ({
       <div
         ref={carouselWrapper}
         className={cn(
-          "w-full h-full flex items-center justify-start overflow-x-auto relative z-10",
+          "w-full overflow-x-auto relative z-10 pb-4",
           "scrollbar-hide" // For hiding scrollbar on Chrome, Safari and Opera
         )}
         style={{
-          perspective: "1000px",
           // @ts-ignore
           "-ms-overflow-style": "none", // For hiding scrollbar on IE and Edge
           "scrollbar-width": "none", // For hiding scrollbar on Firefox
@@ -46,28 +45,24 @@ export const Carousel = ({
       >
         <div
           className={cn(
-            "flex items-center h-full gap-4 p-4",
+            "flex items-center gap-4 px-4 py-8",
             active !== null && "justify-start"
           )}
           style={{
-            transformStyle: "preserve-3d",
+            width: "max-content",
           }}
         >
           {items.map((item, index) => (
             <motion.div
               key={"card" + index}
               className={cn(
-                "h-[400px] w-[300px] md:h-[500px] md:w-[400px] rounded-2xl border border-neutral-200 dark:border-neutral-800 flex-shrink-0",
+                "h-[350px] w-[280px] sm:h-[400px] sm:w-[320px] md:h-[450px] md:w-[350px] rounded-2xl border border-neutral-200 shadow-lg hover:shadow-xl transition-shadow duration-300 flex-shrink-0 cursor-pointer",
                 active === index &&
-                  "absolute h-[500px] w-full md:h-[600px] md:w-[800px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
-                "transform-style: preserve-3d"
+                  "fixed h-[80vh] w-[90vw] sm:h-[85vh] sm:w-[80vw] md:h-[90vh] md:w-[70vw] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50"
               )}
-              style={{
-                transform: `rotateY(calc(var(--rotate-y, 0) * 1deg)) translateZ(calc(var(--translate-z, 0) * 1px))`,
-                backfaceVisibility: "hidden",
-                transformStyle: "preserve-3d",
-              }}
               onClick={() => setActive(index)}
+              whileHover={{ scale: active === index ? 1 : 1.02 }}
+              transition={{ duration: 0.2 }}
             >
               {item}
             </motion.div>
@@ -130,9 +125,9 @@ export const Card = ({
         }}
       >
         <div className="absolute inset-0 bg-black/40 h-full w-full" />
-        <div className="absolute bottom-0 p-8 text-white w-full">
-          <p className="text-neutral-300 text-sm">{card.category}</p>
-          <p className="text-2xl md:text-4xl font-semibold">{card.title}</p>
+        <div className="absolute bottom-0 p-4 sm:p-6 md:p-8 text-white w-full">
+          <p className="text-yellow-400 text-xs sm:text-sm font-medium mb-2">{card.category}</p>
+          <p className="text-lg sm:text-xl md:text-2xl font-semibold leading-tight line-clamp-3">{card.title}</p>
         </div>
       </motion.div>
       {typeof active === "number" && active === index && (
